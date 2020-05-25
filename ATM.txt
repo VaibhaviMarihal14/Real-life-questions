@@ -79,14 +79,41 @@ class Atm
 
 
 
-PYTHON PTOGRAM :
+PYTHON PROGRAM :
 
-n,m = map(str,input().split())
-n = int(n)
-m = float(m)
-if n%5 == 0 and n<=(m-0.5):
-    m=m-n-0.5
-    print('%.2f'%m)
+x,y = map(float,input().split())
+if x%5 == 0 :
+	if (x+0.5)<=y :
+		y-=(x+0.5)
+print(y)
+
+
+
+
+
+
+
+
+
+C++ PROGRAM :
+
+#include<bits/stdc++.h>
+typedef long long int ll;
+using namespace std;
+int main() 
+ {
+    int x;
+    double y;
+    cin>>x>>y;
+    if(x%5==0)
+    {
+        if(y>(x+0.50))
+        {
+          y=y-x-0.50;
+        }
+    }
+    cout<<y<<endl;
     
-else:
-    print("%.2f" % m)
+	return 0;
+     
+ }

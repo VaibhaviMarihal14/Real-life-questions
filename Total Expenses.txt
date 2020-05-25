@@ -73,14 +73,50 @@ class Test
 
 PYTHON PROGRAM :
 
-for _ in range(int(input())):
-    q,a=map(int,input().split())
-    ss=0
+for t in range(int(input())):
+    q,p=map(int,input().split())
+    store=0
     if q>1000:
-        ss=q*a
-        tt=ss*0.1
-        aa=ss-tt
-        print("{:.6f}".format(aa))
+        store=q*p
+        dis=store*0.1
+        tot_exp=store-dis
+        print("{:.6f}".format(tot_exp))
     else:
-        ss=q*a
-        print("{:.6f}".format(ss))
+        store=q*p
+        print("{:.6f}".format(store))
+
+
+
+
+
+
+
+
+
+
+C++ PROGRAM :
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{ int T,i,P,Q;
+double TP;
+cin>>T;
+for(i=0;i<T;i++)
+{
+    cin>>Q>>P;
+    if(Q>1000)
+    {
+        TP=(P*Q-(0.1*(Q*P)));
+     cout<<fixed<<setprecision(6)<<TP<<endl;   
+    }
+    else
+   { TP=(P*Q);
+    cout<<fixed<<setprecision(6)<<TP<<endl;
+   }
+   
+cout<<"\n";
+    
+}
+return 0;
+}
