@@ -1,0 +1,86 @@
+Total Expenses.
+
+While purchasing certain items, a discount of 10% is offered if the quantity purchased is more than 1000.
+If the quantity and price per item are input, write a program to calculate the total expenses.
+
+Input
+The first line contains an integer T, total number of test cases. Then 
+follow T lines, each line contains integers quantity and price.
+
+Output
+Output the total expenses while purchasing items.
+
+Constraints
+1 ≤ T ≤ 1000
+1 ≤ quantity,price ≤ 100000
+Example
+Input
+
+3 
+100 120
+10 20
+1200 20
+
+Output
+
+12000.000000
+200.000000
+21600.000000
+
+
+
+
+
+JAVA PROGRAM :
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Test
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		  Scanner sc=new Scanner(System.in);
+		  int t= sc.nextInt();
+		  while(t-->0){
+		      double q=sc.nextDouble();
+		      double p=sc.nextDouble();
+		       double d;
+		       double z=p*q;
+		      if(q<=1000)
+		      {
+		          System.out.format("%6f",z);
+		          System.out.println("");
+		      }
+		      else{
+		          
+		          d=(z*10)/100;
+		          double s=z-d;
+		          System.out.format("%6f",s);
+		          System.out.println("");
+		      }
+		  }
+	}
+}
+
+
+
+
+
+
+
+
+PYTHON PROGRAM :
+
+for _ in range(int(input())):
+    q,a=map(int,input().split())
+    ss=0
+    if q>1000:
+        ss=q*a
+        tt=ss*0.1
+        aa=ss-tt
+        print("{:.6f}".format(aa))
+    else:
+        ss=q*a
+        print("{:.6f}".format(ss))
