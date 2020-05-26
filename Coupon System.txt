@@ -1,0 +1,209 @@
+
+
+Chef is organizing an exam for certifying algorithmic skills. The exam will consist of three levels: 1, 2 and 3, and will be organized at various cities numbered from 1 to 100.
+
+You have received n coupons which give discounts for the exam. Each coupon can be applied for a particular city, for a given level and will provide a certain discount.
+COUPON SYSTEM :
+
+You want to attempt all the three levels of the exam, and you are willing to go to different cities to avail the maximum discount. 
+So, for each level, find out the maximum discount that you can avail, and which city you'd need to go to to do so. 
+If there are multiple such cities, choose the city that has the least number.
+That is, if the discounts are same, city i is preferable over city j, if i < j.
+
+
+
+Input
+
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains a single integer n denoting the number of coupons.
+Each of the next n lines contains three space-separated integers city c, level l and discount x applicable in the i-th coupon.
+
+
+
+Output
+
+For each test case, output three lines. 
+The first line should contain two space-separated integers: maximum discount for level 1, and the city where you can avail this discount. 
+In case of ties, find the smallest numbered such city. 
+Similarly, second and third line should contain similar info for second and third levels.
+
+
+
+Constraints
+
+1 ≤ T ≤ 100
+3 ≤ n ≤ 100
+1 ≤ c ≤ 100
+1 ≤ l ≤ 3
+1 ≤ x ≤ 100
+It is guaranteed that for each level, there will at least one coupon.
+
+
+
+Example
+
+Input
+1
+7
+2 1 10
+1 1 20
+3 2 100
+2 3 50
+2 2 100
+5 3 75
+100 3 75
+
+
+Output
+20 1
+100 2
+75 5
+
+
+
+
+
+JAVA PROGRAM :
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+		   int n=sc.nextInt(); 
+		   int a[]=new int[4];
+		   int b[]=new int[4];
+		   while(n-->0)
+		   {
+		      int c=sc.nextInt(); 
+		      int l=sc.nextInt(); 
+		      int d=sc.nextInt();
+		      if(d>a[l])
+		      {
+		          a[l]=d;
+		          b[l]=c;
+		      }
+		      else if(d==a[l] && c<b[l])
+		      b[l]=c;
+		     
+		   }
+		    for(int i=1;i<4;i++)
+		      {
+		          System.out.println(a[i]+" "+b[i]);
+		      }
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+PYTHON PROGRAM :
+
+for t in range(int(input())):
+    n = int(input())
+    c1=c2=c3=0
+    d1=d2=d3=0
+    
+    for i in range(n):
+        c,l,d = map(int,input().split())
+        if l == 1:
+            if d > d1:
+                d1 = d
+                c1 = c
+            elif d == d1:
+                if c < c1:
+                    c1 = c
+        if l == 2:
+            if d > d2:
+                d2 = d
+                c2 = c
+            elif d == d2:
+                if c < c2:
+                    c2 = c
+        if l == 3:
+            if d > d3:
+                d3 = d
+                c3 = c
+            elif d == d3:
+                if c < c3:
+                    c3 = c
+    print(d1,c1)
+    print(d2,c2)
+    print(d3,c3)
+
+
+
+
+
+
+
+
+
+C++ PROGRAM :
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int T;
+	cin>>T;
+	while(T--)
+	{
+	    int n, c, l, d;
+	    cin>>n;
+	    int city[3]={0,0,0}, dis[3]={0,0,0};
+	    for(int i=0; i<n; i++)
+	    {
+	        cin>>c>>l>>d;
+	        if(l==1)
+	        {
+	            if(d>dis[0])
+	               { 
+	                   dis[0]=d;
+	                   city[0]=c;
+	               }
+	            else if(d==dis[0] && city[0]>c)
+	                city[0]=c;
+	        }
+	        else if(l==2)
+	        {
+	            if(d>dis[1])
+	                {
+	                    dis[1]=d;
+	                    city[1]=c;
+	                }
+	            else if(d==dis[1] && city[1]>c)
+	                city[1]=c;
+	        }
+	        else if(l==3)
+	        {
+	            if(d>dis[2])
+	               { 
+	                   dis[2]=d;
+	                   city[2]=c;
+	               }
+	            else if(d==dis[2] && city[2]>c)
+	                city[2]=c;
+	        }
+	    }
+	    for(int i=0; i<3; i++)
+	    cout<<dis[i]<<" "<<city[i]<<endl;
+	    
+	}
+	return 0;
+}
