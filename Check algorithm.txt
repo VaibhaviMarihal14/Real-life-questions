@@ -1,0 +1,155 @@
+CHECK ALGORITHM :
+
+One day, Saeed was teaching a string compression algorithm. This algorithm finds all maximal substrings which contains only 
+one character repeated one or more times (a substring is maximal if it we cannot add one character to its left or right without 
+breaking this property) and replaces each such substring by the string "cK", where K is the length of the substring and c is the 
+only character it contains. For example, "aabaaa" is compressed to "a2b1a3".
+
+Saeed wanted to check if the students understood the algorithm, so he wrote a string S on the board and asked the students 
+if the algorithm is effective on S, i.e. if the string created by compressing S is strictly shorter than S. Help them answer this question.
+
+
+
+Input
+
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first and only line of each test case contains a single string S.
+
+
+Output
+For each test case, print a single line containing the string "YES" if the algorithm is effective on S or "NO" if it is not.
+
+
+Constraints
+1≤T≤100
+1≤|S|≤103
+S may consist of only lowercase English letters.
+
+
+Example Input
+3
+bbbbbbbbbbaa
+c
+aaaaaaaaaabcdefgh
+
+
+
+
+Example Output
+YES
+NO
+NO
+
+
+
+Explanation
+Example case 1:
+
+The compressed string of "bbbbbbbbbbaa" is "b10a2", which is shorter.
+The compressed string of "c" is "c1", which is not shorter than "c".
+The compressed string of "aaaaaaaaaabcdefgh" is "a10b1c1d1e1f1g1h1", which is not shorter than "aaaaaaaaaabcdefgh" (both strings have length 17).
+
+
+
+
+
+JAVA PROGRAM :
+
+import java.util.*;
+
+class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		for(int u=0;u<t;u++)
+		{
+		    String str=sc.next();
+		    String res="";
+		    int count;
+		    for(int i=0;i<str.length();i++){
+		        count=1;
+		        while(i+1<str.length() && str.charAt(i)==str.charAt(i+1)){
+		            count++;
+		            i++;
+		        }
+		        res+=str.charAt(i);
+		        res+=count;
+		    }
+		    if(res.length()<str.length())
+		        System.out.println("YES");
+		    else
+		        System.out.println("NO");
+		}
+    }
+}
+
+
+
+
+PYTHON PROGRAM :
+
+T = int(input())
+
+for t in range(T):
+    S = input()
+    
+    curr_char = S[0]
+    ind = 0
+    s = ''
+    while ind < len(S):
+        curr_char = S[ind]
+        curr_count = 0
+        while ind < len(S) and (S[ind] == curr_char):
+            ind+=1
+            curr_count += 1
+        s+= str(curr_char) + str(curr_count)
+    if len(s) < len(S):
+        print('YES')
+    else:
+        print('NO')
+
+
+
+
+
+
+C++ PROGRAM :
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() 
+{
+	int t;
+	cin>>t;
+	while(t--) 
+	{
+	    string s1,s2="";
+	    cin>>s1;
+	    int n=s1.size();
+	    int count=1,i=1;
+	    while(i<n)
+	    {
+	        if(s1[i]==s1[i-1])
+	        {
+	            count++;
+	        }
+	        else
+	        {
+	            s2=s2+s1[i-1]+to_string(count);
+	            count=1;
+	        }
+	        i++;
+	    }
+	    s2=s2+s1[n-1]+to_string(count);
+	    int n2=s2.size();
+	    if(n2 < n)
+	        cout<<"YES\n";
+	    else
+	        cout<<"NO\n";
+	 }
+	    return 0;
+}
