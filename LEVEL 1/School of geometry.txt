@@ -1,0 +1,144 @@
+School of Geometry :
+
+Once again, we have a lot of requests from coders for a challenging problem on geometry. 
+Geometry expert Nitin is thinking about a problem with parabolas, icosahedrons, crescents and trapezoids, 
+but for now, to encourage beginners, he chooses to work with circles and rectangles.
+
+You are given two sequences A1,A2,…,AN and B1,B2,…,BN. You should choose a permutation P1,P2,…,PN of the integers 1 through N 
+and construct N rectangles with dimensions A1×BP1,A2×BP2,…,AN×BPN. Then, for each of these rectangles, 
+you should construct an inscribed circle, i.e. a circle with the maximum possible area that is completely contained in that rectangle.
+
+Let S be the sum of diameters of these N circles. Your task is to find the maximum value of S.
+
+
+
+Input
+
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+The first line of each test case contains a single integer N.
+The second line contains N space-separated integers A1,A2,…,AN.
+The third line contains N space-separated integers B1,B2,…,BN.
+
+
+Output
+For each test case, print a single line containing one integer ― the maximum value of S. It is guaranteed that this value is always an integer.
+
+
+Constraints
+1≤T≤50
+1≤N≤104
+1≤Ai,Bi≤109 for each valid i
+
+
+
+
+Example Input
+2
+4
+8 8 10 12
+15 20 3 5
+3
+20 20 20
+10 10 10
+
+
+Example Output
+30
+30
+
+
+
+Explanation
+Example case 1: Four rectangles with dimensions 8×3, 8×5, 10×20 and 12×15 lead to an optimal answer.
+
+
+
+
+
+JAVA PROGRAM :
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	Scanner sc=new Scanner(System.in);
+   int t=sc.nextInt();
+   while(t-->0)
+   {
+       int n=sc.nextInt();
+       int a[]=new int[n];
+       int b[]=new int[n];
+       for(int i=0;i<n;i++)
+       {
+           a[i]=sc.nextInt();
+           
+       }
+       for(int i=0;i<n;i++)
+       {
+           b[i]=sc.nextInt();
+           
+       }
+       Arrays.sort(a);
+       Arrays.sort(b);
+      long w=0;
+       for(int i=0;i<n;i++)
+       {
+           w=w+Math.min(a[i], b[i]);
+           
+       }
+       System.out.println(w);
+           }
+	    
+	}
+}
+
+
+
+
+
+PYTHON PROGRAM :
+
+t=int(input())
+for i in range(t):
+    n=int(input())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    a.sort()
+    b.sort()
+    v=0
+    for j in range(n):
+        v += min(a[j],b[j])
+    print(v)
+
+
+
+
+C++ PROGRAM :
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	long long t,i,sum,n;
+	cin>>t;
+	while(t--)
+	{  sum=0;
+	    cin>>n;
+	    long long a[n],b[n];
+	    for(i=0;i<n;i++)cin>>a[i];
+	     for(i=0;i<n;i++)cin>>b[i];
+	     sort(a,a+n);
+	     sort(b,b+n);
+	      for(i=0;i<n;i++)sum=sum+min(a[i],b[i]);
+	      cout<<sum<<"\n";
+	   
+	    
+	}
+	return 0;
+}
+
+
